@@ -1,5 +1,5 @@
-const router = require('express').Router
-router.length('/', (req,res)=>{
+const router = require('express').Router()
+router.get('/', (req,res)=>{
     res.send('GET/places')
 })
 module.exports = router
