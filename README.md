@@ -2,6 +2,8 @@
 
 REST-Rant is an app where users can review restaurants.
 
+As a reviewer I need a comment section so I can state my opinions.
+
 | Method | Path | Purpose |
 | ------ | ------------------------------------- | ----------------------------- |
 | GET | `/` | The home page |
