@@ -16,3 +16,13 @@ As a reviewer I need a comment section so I can state my opinions.
 | DELETE | `/places/:id` | Delete a place |
 | POST | `/places/:id/rant` | Add rant to a place |
 | DELETE | `/places/:id/rant/:rantId` | Delete a rant |
+
+###Data 
+places
+| field | type |
+|:------:|:------:|
+| name | string |
+| city | string |
+| state | string |
+| cuisines | string |
+| pic | string |
