@@ -17,7 +17,7 @@ As a reviewer I need a comment section so I can state my opinions.
 | POST | `/places/:id/rant` | Add rant to a place |
 | DELETE | `/places/:id/rant/:rantId` | Delete a rant |
 
-###Data 
+### Data 
 places
 | field | type |
 |:------:|:------:|
