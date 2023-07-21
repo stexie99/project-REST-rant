@@ -4,7 +4,12 @@ const places = require('../models/places.js')
 router.get('/new', (req,res)=>{
   res.render('places/new')
 })
-router.get(':/id', (req,res)=>{
+
+router.get('/', (req,res)=>{
+    res.render('places/index', { places })
+})
+
+router.get('/:id', (req,res)=>{
   let id = Number(req.params.id)
   if(isNaN(id)){
     res.render('error404')
@@ -13,26 +18,10 @@ router.get(':/id', (req,res)=>{
     res.render('error404')
   }
   else{
-    res.render('places/show', {places: places[id]})
+    res.render('places/show', {places: places[id], id})
   }
 })
-router.get('/', (req,res)=>{
-    let places = [{
-        name: 'H-Thai-ML',
-        city: 'Seattle',
-        state: 'WA',
-        cuisines: 'Thai, Pan-Asian',
-        pic: '/images/thai-food.jpg'
-      }, {
-        name: 'Coding Cat Cafe',
-        city: 'Phoenix',
-        state: 'AZ',
-        cuisines: 'Coffee, Bakery',
-        pic: '/images/man-pouring-milk-into-coffee.jpg'
-      }]
-      
-    res.render('places/index', { places })
-})
+
 router.post('/', (req, res) => {
   console.log(req.body)
   if (!req.body.pic) {
@@ -47,6 +36,19 @@ router.post('/', (req, res) => {
   }
   places.push(req.body)
   res.redirect('/places')
+})
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    places.splice(id, 1)
+    res.redirect('/places')
+  }
 })
 
 module.exports = router
