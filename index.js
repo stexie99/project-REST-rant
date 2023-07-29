@@ -1,7 +1,8 @@
 require('dotenv').config()
-let express = require('express')
+const express = require('express')
 const methodOverride= require('method-override')
-let app = express()
+const app = express()
+const mongoose = require('mongoose')
 
 // Express Settings
 app.set('views', __dirname + '/views')
@@ -20,4 +21,10 @@ app.get('/', (req,res)=>{
 app.get('*', (req,res)=>{
     res.render('error404')
 })
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('DB connected'))
+    .catch(err => console.error(err));
+
+
 app.listen(process.env.PORT)
